@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="bootstrap-5.3.3-dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/all.css">
+    <title>Phones Store || Home Page</title>
+</head>
+<body>
+
+ <header>
+     <nav class="navbar navbar-expand bg-dark fixed-top pb-0" data-bs-theme="dark">
+        <div class="container-fluid">
+          <ul class="list-unstyled p-1 m-0" style="max-width: 55%;">
+           <li><a class="nav-item navbar-brand" href="#">Phones Store</a></li>
+           <li id="user"><span class="nav-item navbar-text" id="username" href="#" ></span></li>
+          </ul>
+          <ul class="navbar-nav user-info d-none text-end ">
+            <li class="nav-item">
+              <a class="nav-link" href="#" id="cart" >
+                  <i class="fa-solid fa-cart-shopping position-relative">
+                    <span class="d-none"></span>
+                  </i>
+              </a>
+            </li>
+            <li class="nav-item" >
+              <a class="nav-link" id="log_out" href="#" >Log out</a>
+            </li>
+          </ul>
+          <ul class="navbar-nav links text-end m-0" >
+            <li class="nav-item"><a href="register.html" class="nav-link">register</a></li>
+            <li class="nav-item"><a href="login.html" class="nav-link">login</a></li>
+          </ul>
+        </div>
+     </nav>
+ </header>
+
+ <!-- //////////////////////////////// -->
+  
+ <!-- products -->
+
+ <div class="products">
+  <div class="container mt-5">
+    <div class="row w-75 rounded-4 overflow-hidden bg-light">
+      <img class="col-md-4 col-lg-3 p-0" src="images/Iphone 11 64g.webp" alt="iphone 11">
+      <div class="info p-3">
+        <h2>iPhone 11</h2>
+        <p class="text-secondary">64 GB</p>
+        <p class="text-secondary">Color : Black</p>
+        <h3>500$</h3>
+      </div>
+      <div class="actions p-1">
+        <button class="add-to-cart btn btn-primary w-50">add to cart</button>
+        <i class="fa-regular fa-heart"></i>
+      </div>
+    </div>
+  </div>
+ </div>
+  
+  <!-- /////////////////////////////// -->
+
+ <!-- shopping cart -->
+   <div class="cart-list p-3 text-center fs-5 rounded">
+    <h3 id="cart-title">Shopping Cart</h3>
+    <div class="content">
+      <p id="empty"> shopping cart is empty</p>
+    </div>
+    <h5 id="cart-page"><a href="CartProducts.html">view all cart products</a></h5>
+   </div>
+
+ <script src="bootstrap-5.3.3-dist/js/bootstrap.bundle.min.js"></script>   
+ <script src="js/script.js"></script>   
+ <script src="js/user.js"></script>
+</body>
+</html>

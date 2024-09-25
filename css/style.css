@@ -1,0 +1,154 @@
+*
+{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+body{
+    background-image: url(../images/wallpaper.jpg);
+    background-position: center;
+    background-size: cover;
+    background-attachment: fixed;
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif !important;
+}
+.register , .login
+{
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%,-50%);
+}
+
+.register input , .login input {outline: none;}
+
+.products .row{
+
+    border: 4px solid #383737;
+}
+.products .row>div{flex: 1 ;}
+
+.actions
+{
+    display: flex;
+    flex-direction: column;
+    justify-content:space-between;
+    align-items: end;
+}
+
+.actions i {cursor: pointer;}
+
+#username  , #cart{font-size: 1.5rem; line-height: 1.5rem;}
+
+#log_out{font-size: 1.1rem;}
+
+#cart-title ,#cart-page
+{
+    box-shadow:  5px 4px 4px black,
+                -2px -2px 3px rgb(120, 117, 117);;
+    padding: 0.5rem;              
+}
+.emptycart h2
+{
+   color: transparent;
+   -webkit-text-stroke: 0.5px #fff;
+}
+#username
+{
+    color: chocolate;
+    text-shadow: 5px 4px 4px black,
+                 -2px -2px 3px rgb(120, 117, 117);
+}
+#cart span
+{
+    position: absolute;
+    top: -10px;
+    right: -10px;
+    border-radius: 50%;
+    background-color:red;
+    color: #fff;
+    padding: .5em;
+    font-size:0.45em;
+    width: 20px;
+    height: 20px;
+    text-align: center;
+    display: block;
+}
+#cart
+{
+    margin:0 30px;
+}
+.cart-list
+{
+    position: absolute;
+    background-color: antiquewhite;
+    top: 80px;
+    right:30px;
+    transition: all 0.5s ease;
+    transform: scale(0,0);
+}
+.mob-br
+{
+    display: none;
+}
+.products
+{
+    margin-top: 7rem;
+}
+
+.cart-list-show{transform: scale(1,1)}
+
+#cart-page a
+{
+    text-decoration: none ;
+    color: #383737;
+}
+#cart-page a:hover
+{
+    text-decoration: underline;
+}
+.emptycart
+{
+    position: absolute;
+    top: 40%;
+    left: 0;
+    color: #fff;
+    text-align: center;
+    letter-spacing: 2px;
+
+}
+#user {
+    white-space: nowrap;
+    overflow-x: auto;
+    overflow-y: hidden;
+    padding-right: 10px;
+}
+#user::-webkit-scrollbar {
+    height: 5px; 
+}
+#user::-webkit-scrollbar-thumb {
+    background-color: #555;
+    border-radius: 0.5rem;
+}
+@media(max-width:768px)
+{
+  .nav-link , .navbar-brand,#username , .links .nav-link
+  {
+    font-size: 17px !important;
+    line-height: 17px !important;
+  }
+
+  #cart span
+  {
+    width: 18px;
+    height: 18px;
+    font-size: 8px;
+  }
+  .mob-br
+  {
+    display: inline;
+  }
+  #cart
+  {
+    margin:0 10px;
+  }
+}
