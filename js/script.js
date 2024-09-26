@@ -110,7 +110,7 @@ function add_to_cart(id)
     if(document.querySelector("#empty"))
       document.querySelector("#empty").remove();
 
-    badge.innerHTML++;
+    badge.innerHTML=cartProducts.length;
    
 }
 document.getElementById("cart").addEventListener("click",()=>{
@@ -142,13 +142,7 @@ hearts.forEach(heart=>{
 })
 window.addEventListener("pageshow", (event)=> {
   if (event.persisted) {
-    badge.innerHTML=cartProducts.length
-    document.querySelector(".content").innerHTML=(()=>{
-      let items=cartProducts.map(item=>`<p>${item.name}</p>`)
-  
-       return items.join("")
-     })()
-  
+   location.reload()
   }
   
 });
