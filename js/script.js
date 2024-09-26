@@ -1,4 +1,11 @@
 "use strict"
+
+window.addEventListener("pageshow", (event)=> {
+  if (event.persisted) {
+   location.reload()
+  }
+  
+});
 let products=[
 
     {
@@ -140,9 +147,3 @@ hearts.forEach(heart=>{
          
     }
 })
-window.addEventListener("pageshow", (event)=> {
-  if (event.persisted) {
-   location.reload()
-  }
-  
-});
