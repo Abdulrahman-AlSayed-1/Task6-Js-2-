@@ -82,7 +82,7 @@ appendElements();
 
 let cart_list=document.querySelector(".cart-list")
 let badge=document.querySelector("#cart span")
-let cartProducts= localStorage.getItem("Cart Products")? JSON.parse(localStorage.getItem("Cart Products")): [] ;
+let cartProducts= localStorage.getItem("Cart Products")? JSON.parse(localStorage.getItem("Cart Products")): [] ; //ternary function
  
 badge.innerHTML=cartProducts.length
 
@@ -140,3 +140,9 @@ hearts.forEach(heart=>{
          
     }
 })
+window.addEventListener("pageshow", (event)=> {
+  if (event.persisted) {
+    location.reload();
+  }
+  
+});
