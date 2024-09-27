@@ -143,11 +143,13 @@ hearts.forEach(heart=>{
 window.addEventListener("pageshow", (event)=> {
   if (event.persisted) {
     cartProducts= JSON.parse(localStorage.getItem("Cart Products")) ||[]
-    badge.innerHTML=cartProducts.length
+    if (!cartProducts.length) badge.classList.add("d-none")
+    badge.innerHTML=
     document.querySelector(".content").innerHTML=(()=>{
       let items=cartProducts.length&&cartProducts.map(item=>`<p>${item.name}</p>`)
+      console.log(items)
       items=items||[document.querySelector("#empty").textContent]
-
+      console.log(items)
        return items.join("")
      })()
   
