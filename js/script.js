@@ -84,33 +84,23 @@ let cart_list=document.querySelector(".cart-list")
 let badge=document.querySelector("#cart span")
 let cartProducts= localStorage.getItem("Cart Products")? JSON.parse(localStorage.getItem("Cart Products")): [] ; //ternary function
  
-badge.innerHTML=cartProducts.length
+function update_cart(cart)
+{
+  badge.innerHTML=cart.length
+  badge.classList.toggle("d-none", cartProducts.length === 0);
+  document.querySelector(".content").innerHTML = cartProducts.length
+   ? cartProducts.map(item => `<p>${item.name}</p>`).join("")
+   : `<p>${document.querySelector("#empty").textContent}</p>`
 
-if(badge.innerHTML!=="0"){
-    badge.classList.remove("d-none")
-    document.querySelector("#empty").remove();
 }
-
-document.querySelector(".content").innerHTML+=(()=>{
-    let items=cartProducts.map(item=>`<p>${item.name}</p>`)
-
-     return items.join("")
-   })()
+  update_cart(cartProducts)
 
 function add_to_cart(id)
 {
     let found_product=products.find(product => product.id === id);
     cartProducts.push(found_product)
     localStorage.setItem("Cart Products",JSON.stringify(cartProducts))
-    
-    document.querySelector(".content").innerHTML+=`<p>${found_product.name}</p>`
-    
-    badge.classList.remove("d-none");
-
-    if(document.querySelector("#empty"))
-      document.querySelector("#empty").remove();
-
-    badge.innerHTML=cartProducts.length;
+    update_cart(cartProducts)
    
 }
 document.getElementById("cart").addEventListener("click",()=>{
@@ -139,4 +129,11 @@ hearts.forEach(heart=>{
         }
          
     }
+})
+
+window.addEventListener("pageshow" ,(event)=>{
+  if(event.persisted){
+    cartProducts=JSON.parse(localStorage.getItem("Cart Products"))|| []
+    update_cart(cartProducts)
+  }
 })
