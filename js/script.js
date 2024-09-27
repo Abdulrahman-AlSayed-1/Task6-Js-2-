@@ -142,7 +142,14 @@ hearts.forEach(heart=>{
 })
 window.addEventListener("pageshow", (event)=> {
   if (event.persisted) {
-   location.reload()
+    cartProducts= JSON.parse(localStorage.getItem("Cart Products"))
+    badge.innerHTML=cartProducts.length
+    document.querySelector(".content").innerHTML+=(()=>{
+      let items=cartProducts.map(item=>`<p>${item.name}</p>`)
+  
+       return items.join("")
+     })()
+  
   }
   
 });
