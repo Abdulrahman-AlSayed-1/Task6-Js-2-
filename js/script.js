@@ -87,9 +87,9 @@ let cartProducts= localStorage.getItem("Cart Products")? JSON.parse(localStorage
 function update_cart(cart)
 {
   badge.innerHTML=cart.length
-  badge.classList.toggle("d-none", cartProducts.length === 0);
-  document.querySelector(".content").innerHTML = cartProducts.length
-   ? cartProducts.map(item => `<p>${item.name}</p>`).join("")
+  badge.classList.toggle("d-none", cart.length === 0);
+  document.querySelector(".content").innerHTML = cart.length
+   ? cart.map(item => `<p>${item.name}</p>`).join("")
    : `<p>${document.querySelector("#empty").textContent}</p>`
 
 }
