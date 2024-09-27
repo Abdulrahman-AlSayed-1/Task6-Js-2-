@@ -88,7 +88,7 @@ badge.innerHTML=cartProducts.length
 
 if(badge.innerHTML!=="0"){
     badge.classList.remove("d-none")
-    document.querySelector("#empty").classList.add("d-none");
+    document.querySelector("#empty").remove();
 }
 
 document.querySelector(".content").innerHTML+=(()=>{
@@ -107,7 +107,8 @@ function add_to_cart(id)
     
     badge.classList.remove("d-none");
 
-    document.querySelector("#empty").classList.add("d-none");
+    if(document.querySelector("#empty"))
+      document.querySelector("#empty").remove();
 
     badge.innerHTML=cartProducts.length;
    
@@ -139,17 +140,3 @@ hearts.forEach(heart=>{
          
     }
 })
-window.addEventListener("pageshow", (event)=> {
-  if (event.persisted) {
-    cartProducts= JSON.parse(localStorage.getItem("Cart Products")) || []
-    if (!cartProducts.length) badge.classList.add("d-none")
-    badge.innerHTML=cartProducts.length
-    document.querySelector(".content").innerHTML=(()=>{
-      let items=cartProducts.length&&cartProducts.map(item=>`<p>${item.name}</p>`)
-      items=items||[document.querySelector("#empty").textContent]
-       return items.join("")
-     })()
-  
-  }
-  
-});
