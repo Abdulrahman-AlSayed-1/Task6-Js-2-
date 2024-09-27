@@ -82,34 +82,30 @@ appendElements();
 
 let cart_list=document.querySelector(".cart-list")
 let badge=document.querySelector("#cart span")
-let cartProducts= localStorage.getItem("Cart Products")? JSON.parse(localStorage.getItem("Cart Products")): [] ; //ternary function
+let cartProducts=localStorage.getItem("Cart Products")? JSON.parse(localStorage.getItem("Cart Products")): [] ; //ternary function
  
-function update_cart(cart)
+function update_cart()
 {
-  badge.innerHTML=cart.length
-  badge.classList.toggle("d-none", cart.length === 0);
-  document.querySelector(".content").innerHTML = cart.length
-   ? cart.map(item => `<p>${item.name}</p>`).join("")
-   : `<p>Shopping cart is empty</p>`
+  badge.innerHTML=cartProducts.length
+  badge.classList.toggle("d-none", !cartProducts.length);
+  document.querySelector(".content").innerHTML = cartProducts.length
+   ? cartProducts.map(item => `<p>${item.name}</p>`).join("")
+   : "<p>Shopping cart is empty</p>"
 
 }
-  update_cart(cartProducts)
+  update_cart()
 
 function add_to_cart(id)
 {
     let found_product=products.find(product => product.id === id);
     cartProducts.push(found_product)
     localStorage.setItem("Cart Products",JSON.stringify(cartProducts))
-    update_cart(cartProducts)
+    update_cart()
    
 }
 document.getElementById("cart").addEventListener("click",()=>{
-   
-    if(cart_list.classList.contains("cart-list-show"))
-        cart_list.classList.remove("cart-list-show")
-    
-    else
-     cart_list.classList.add("cart-list-show")
+  const isAdded = cart_list.classList.contains("cart-list-show")
+  cart_list.classList.toggle("cart-list-show", !isAdded )
      
 })
 
@@ -118,22 +114,19 @@ let hearts=document.querySelectorAll(".fa-heart")
 hearts.forEach(heart=>{
 
     heart.onclick=()=>{
+       const isRegular=heart.classList.contains("fa-regular")
+       heart.classList.toggle ("fa-solid",isRegular)
+       heart.classList.toggle ("fa-regular", !isRegular)
+       
+       heart.style.color =  isRegular? "red" : ""
 
-        if(heart.classList.contains("fa-solid")){
-          heart.classList.replace("fa-solid","fa-regular")
-          heart.style.color=""
-        }
-        else{
-         heart.classList.replace("fa-regular","fa-solid")
-         heart.style.color="red"
-        }
-         
     }
+
 })
 
-window.addEventListener("pageshow" ,(event)=>{
+window.addEventListener("pageshow" , event=>{
   if(event.persisted){
     cartProducts=JSON.parse(localStorage.getItem("Cart Products"))|| []
-    update_cart(cartProducts)
+    update_cart()
   }
 })
