@@ -90,7 +90,7 @@ function update_cart(cart)
   badge.classList.toggle("d-none", cart.length === 0);
   document.querySelector(".content").innerHTML = cart.length
    ? cart.map(item => `<p>${item.name}</p>`).join("")
-   : `<p>${document.querySelector("#empty").textContent}</p>`
+   : `<p>Shopping cart is empty</p>`
 
 }
   update_cart(cartProducts)
